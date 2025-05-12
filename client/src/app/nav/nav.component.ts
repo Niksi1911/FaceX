@@ -21,7 +21,6 @@ export class NavComponent {
         console.log(response);
       },
       error: error => console.error(error)
-      
 
     })
   }

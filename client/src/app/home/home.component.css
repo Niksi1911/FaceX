@@ -3,8 +3,8 @@
     justify-content: center;
     align-items: center;
     margin-top: 100px;
-    flex-wrap: wrap; /* Da se složi jedan ispod drugog na malim ekranima */
-    gap:150px; /* Razmak između FaceX i forme */
+    flex-wrap: wrap; 
+    gap:150px; 
     
   }
   
@@ -20,15 +20,3 @@
     font-size:5rem;
     font-weight: bold;
   }
-
-.register-container {
-
-    width: 360px;
-    padding: 20px;
-    
-    /* centrirano */
-    background: white;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-
-}
