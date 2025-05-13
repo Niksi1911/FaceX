@@ -1,0 +1,142 @@
+[
+    {
+        "UserName": "Lisa",
+        "Gender": "female",
+        "Email": "lisa@gmail.com",
+        "DateOfBirth": "1956-07-22",
+        "City": "Greenbush",
+        "Country": "Martinique",
+        "Photos": [
+            {
+                "Url": "https://randomuser.me/api/portraits/women/54.jpg"
+                
+            }
+        ]
+    },
+    {
+        "UserName": "Karen",
+        "Gender": "female",
+        "Email": "karen@gmail.com",
+        "DateOfBirth": "1995-10-12",
+        "City": "Celeryville",
+        "Country": "Grenada",
+        "Photos": [
+            {
+                "Url": "https://randomuser.me/api/portraits/women/50.jpg"
+                
+            }
+        ]
+    },
+    {
+        "UserName": "Margo",
+        "Gender": "female",
+        "Email": "margo@gmail.com",
+        "DateOfBirth": "1959-01-24",     
+        "City": "Rosewood",
+        "Country": "Svalbard and Jan Mayen Islands",
+        "Photos": [
+            {
+                "Url": "https://randomuser.me/api/portraits/women/14.jpg"
+                
+            }
+        ]
+    },
+    {
+        "UserName": "Lois",
+        "Gender": "female",
+        "Email": "lois@gmail.com",
+        "DateOfBirth": "1988-06-22",
+        "City": "Orviston",
+        "Country": "Zimbabwe",
+        "Photos": [
+            {
+                "Url": "https://randomuser.me/api/portraits/women/11.jpg"
+                
+            }
+        ]
+    },
+    {
+        "UserName": "Ruthie",
+        "Gender": "female",
+        "Email": "ruthie@gmail.com",
+        "DateOfBirth": "1956-01-12",
+        "City": "Germanton",
+        "Country": "Antigua and Barbuda",
+        "Photos": [
+            {
+                "Url": "https://randomuser.me/api/portraits/women/84.jpg"
+                
+            }
+        ]
+    },
+    {
+        "UserName": "Todd",
+        "Gender": "male",
+        "Email": "todd@gmail.com",
+        "DateOfBirth": "1950-02-07",
+        "City": "Cliff",
+        "Country": "British Indian Ocean Territory",
+        "Photos": [
+            {
+                "Url": "https://randomuser.me/api/portraits/men/90.jpg"
+                
+            }
+        ]
+    },
+    {
+        "UserName": "Porter",
+        "Gender": "male",
+        "Email": "porter@gmail.com",
+        "DateOfBirth": "1967-04-09",
+        "City": "Welda",
+        "Country": "Christmas Island",
+        "Photos": [
+            {
+                "Url": "https://randomuser.me/api/portraits/men/87.jpg"
+                
+            }
+        ]
+    },
+    {
+        "UserName": "Mayo",
+        "Gender": "male",
+        "Email": "mayo@gmail.com",
+        "DateOfBirth": "1990-03-23",
+        "City": "Clarence",
+        "Country": "Burkina Faso",
+        "Photos": [
+            {
+                "Url": "https://randomuser.me/api/portraits/men/57.jpg"
+                
+            }
+        ]
+    },
+    {
+        "UserName": "Skinner",
+        "Gender": "male",
+        "Email": "skinner@gmail.com",
+        "DateOfBirth": "1952-12-01",
+        "City": "Herald",
+        "Country": "Poland",
+        "Photos": [
+            {
+                "Url": "https://randomuser.me/api/portraits/men/11.jpg"
+                
+            }
+        ]
+    },
+    {
+        "UserName": "Davis",
+        "Gender": "male",
+        "Email": "davis@gmail.com",
+        "DateOfBirth": "1978-03-20",
+        "City": "Lupton",
+        "Country": "Luxembourg",
+        "Photos": [
+            {
+                "Url": "https://randomuser.me/api/portraits/men/93.jpg"
+                
+            }
+        ]
+    }
+]
