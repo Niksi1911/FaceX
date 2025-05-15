@@ -12,6 +12,7 @@ namespace API.Controllers;
 
 [ApiController]
 [Route("api/[controller]")] //  /api/users
+[Authorize]
 public class UsersController(IUserRepository userRepository) : BaseAPIController
 {
   
