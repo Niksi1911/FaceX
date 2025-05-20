@@ -1,11 +1,12 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { MembersService } from '../_services/members.service';
 import { Members } from '../_models/members';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-list',
   standalone: true,
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './list.component.html',
   styleUrl: './list.component.css'
 })

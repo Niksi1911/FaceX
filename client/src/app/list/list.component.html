@@ -2,24 +2,27 @@
   @for (member of members; track member.id) {
     <div class="col-md-4 mb-3">
       <div class="card shadow-sm h-100">
-        <div class="card-body d-flex align-items-center">
+        <div class="card-body d-flex align-items-center justify-content-between">
           
-          <img [src]="member.photoUrl"
-               alt="{{ member.username }}"
-               class="img-thumbnail me-3"
-               style="width: 100px; height: 100px; object-fit: cover; border-radius: 8px;" />
+          <div class="d-flex align-items-center">
+            <img [src]="member.photoUrl"
+                 alt="{{ member.username }}"
+                 class="img-thumbnail me-3"
+                 style="width: 100px; height: 100px; object-fit: cover; border-radius: 8px;" />
 
-          
-          <div>
-            <h5 class="card-title mb-1">{{ member.username }}</h5>
-            <p class="card-text mb-1">
-              <strong>Gender:</strong> {{ member.gender }}<br />
-              <strong>Age:</strong> {{ member.age }}<br />
-              <strong>Email:</strong> {{ member.email }}<br />
-              <strong>Country:</strong> {{ member.country }}<br />
-              <strong>City:</strong> {{ member.city }}
-            </p>
+            <div>
+              <h5 class="card-title mb-1">{{ member.username }}</h5>
+              <p class="card-text mb-1">
+                <strong>Gender:</strong> {{ member.gender }}<br />
+                <strong>Age:</strong> {{ member.age }}<br />
+              </p>
+            </div>
           </div>
+
+          <button class="btn btn-outline-primary ms-3" [routerLink]="['/memberdetail', member.username]">
+                  
+            <i class="bi bi-person"></i>
+          </button>
         </div>
       </div>
     </div>
