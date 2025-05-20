@@ -6,6 +6,7 @@ export interface Members {
     email: string
     age: number
     photoUrl: string
+    description: string
     gender: string
     country: string
     city: string

@@ -1,1 +1,41 @@
-<p>{{member?.username}}</p>
+<div class="container mt-4">
+  <div class="row g-4">
+    <!-- Lijevi box -->
+    <div class="col-md-4">
+      <div class="card text-center p-3">
+        <img [src]="member?.photoUrl" class="img-fluid rounded bigger-img mx-auto d-block mb-3">
+        <ul class="list-unstyled text-start">
+          <li><strong>Country:</strong> {{member?.country}}</li>
+          <li><strong>City:</strong> {{member?.city}}</li> 
+          <li><strong>Age:</strong> {{member?.age}}</li>
+          <li><strong>Gender:</strong> {{member?.gender}}</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Desni box -->
+    <div class="col-md-8">
+      <div class="card p-3">
+        <ul class="nav nav-tabs">
+          <li class="nav-item">
+            <a class="nav-link active">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link">Interests</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link">Photos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link">Messages</a>
+          </li>
+        </ul>
+
+        <div class="mt-4">
+          <h5>Description</h5>
+          <p>{{member?.description}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

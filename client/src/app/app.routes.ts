@@ -10,6 +10,7 @@ export const routes: Routes = [
     {
         path:'',
         runGuardsAndResolvers:'always',
+        
         children : [
             {path: 'wall',component:WallComponent},
             {path: 'list',component:ListComponent},
