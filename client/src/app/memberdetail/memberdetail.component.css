@@ -1,48 +1,50 @@
-.profile-card {
-  background: linear-gradient(135deg, #2c2c54, #1e1e2f);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
-  color: #f0f0f5;
+body {
+  background-color: #ffffff;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.profile-img {
-  width: 140px;
-  height: 140px;
+.profile-card {
+  background-color: #f5f5f5; /* Lagano sivkasta pozadina */
+  border-radius: 15px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  color: #333;
+  padding: 1.5rem;
+}
+
+.bigger-img {
+  max-width: 100%;
+  width: 220px;
+  height: 220px;
   object-fit: cover;
-  border: 4px solid #4ecca3;
-  box-shadow: 0 0 15px #4ecca3;
+  border-radius: 50%;
+  border: 5px solid #6d8cc7;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease;
 }
 
-.username {
-  font-weight: 700;
-  font-size: 1.8rem;
-  letter-spacing: 0.05em;
+.bigger-img:hover {
+  transform: scale(1.03);
 }
 
-.info-group {
+ul.list-unstyled li {
+  margin-bottom: 0.75rem;
+  font-size: 1.05rem;
+  color: #333;
+}
+
+ul.list-unstyled li strong {
+  color: #6d8cc7;
+}
+
+.tab-content {
+  background-color: #f5f5f5;
+  padding: 1.5rem;
+  border-radius: 10px;
   margin-top: 1rem;
 }
 
-.info-item {
-  display: flex;
-  align-items: center;
-  margin-bottom: 1rem;
-  font-size: 1.05rem;
-}
-
-.info-item i {
-  font-size: 1.3rem;
-  color: #4ecca3;
-}
-
-.intro-text {
-  margin: 0 0 0 2rem;
-  font-style: italic;
-  color: #b0b0b8;
-  font-size: 0.95rem;
-}
-.bigger-img {
-  max-width: 250px;
-  border-radius: 15px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+.member-tabs .tab-pane {
+  background-color: #f5f5f5;
+  padding: 1rem;
+  border-radius: 10px;
 }
