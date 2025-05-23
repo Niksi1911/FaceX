@@ -4,6 +4,7 @@ import { HomeComponent } from './home/home.component';
 import { MessagesComponent } from './messages/messages.component';
 import { WallComponent } from './wall/wall.component';
 import { MemberdetailComponent } from './memberdetail/memberdetail.component';
+import { MemberEditComponent } from './member-edit/member-edit.component';
 
 export const routes: Routes = [
     {path:'',component:HomeComponent },
@@ -15,6 +16,7 @@ export const routes: Routes = [
             {path: 'wall',component:WallComponent},
             {path: 'list',component:ListComponent},
             {path: 'memberdetail/:username',component:MemberdetailComponent},
+            {path: 'member_edit',component:MemberEditComponent},
             {path: 'messages',component:MessagesComponent}
         ]
             
