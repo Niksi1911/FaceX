@@ -2,6 +2,7 @@ import { Component, inject, OnInit } from '@angular/core';
 import { MembersService } from '../_services/members.service';
 import { Members } from '../_models/members';
 import { RouterLink } from '@angular/router';
+import { AccountService } from '../_services/account.service';
 
 @Component({
   selector: 'app-list',
@@ -13,8 +14,10 @@ import { RouterLink } from '@angular/router';
 export class ListComponent implements OnInit {
   members: Members[] = [];
   private membersService = inject(MembersService)
+  private accountService = inject(AccountService)
+  currentUser = this.accountService.currentUser()?.username;
 
-   ngOnInit(): void {
+  ngOnInit(): void {
    this.showMembers();
   }
 

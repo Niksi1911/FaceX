@@ -2,17 +2,19 @@ import { Component, inject, OnInit } from '@angular/core';
 import { Members } from '../_models/members';
 import { AccountService } from '../_services/account.service';
 import { MembersService } from '../_services/members.service';
+import { TabsModule } from 'ngx-bootstrap/tabs';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-member-edit',
   standalone: true,
-  imports: [],
+  imports: [TabsModule,FormsModule],
   templateUrl: './member-edit.component.html',
   styleUrl: './member-edit.component.css'
 })
 export class MemberEditComponent implements OnInit {
 
-  member?: Members;
+  member: any;
   private accountService = inject(AccountService);
   private membersService = inject(MembersService);
 
@@ -26,5 +28,9 @@ export class MemberEditComponent implements OnInit {
     this.membersService.getMember(user.username).subscribe({
       next: mem =>this.member = mem
     })
+  }
+
+  editProfile(){
+    
   }
 }

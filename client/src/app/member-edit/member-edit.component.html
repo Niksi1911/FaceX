@@ -1,1 +1,52 @@
-<h1>{{member?.username}}</h1>
+<div class="container mt-4">
+  <div class="row g-4">
+    <!-- Lijevi box -->
+    <div class="col-md-4">
+      <div class="card text-center p-4 profile-card">
+        <img [src]="member.photoUrl" class="img-fluid bigger-img mx-auto mb-4" alt="Profile photo">
+
+        <ul class="list-unstyled text-start">
+          <li><strong>Name:</strong> {{member.username}}</li>
+          <li><strong>Location:</strong> {{member.country}},{{member.city}}</li>
+
+          <li><strong>Age:</strong> {{member.age}}</li>
+          <li><strong>Gender:</strong> {{member.gender}}</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Desni box -->
+    <div class="col-md-8">
+      <div class="card p-4 profile-card">
+        <tabset class="member-tabs">
+          <tab heading="Edit Information">
+            <form (ngSubmit)="editProfile()">
+              <div class="mb-3">
+                <h4>Description</h4>
+                <textarea rows="7" class="form-control" name="description" [(ngModel)]="member.description">
+              </textarea>
+              </div>
+
+              <div class="mb-3">
+              <h4>City</h4>
+              <textarea rows="1" class="form-control" name="city" [(ngModel)]="member.city">
+              </textarea>
+              </div>
+              
+              <div class="mb-3">
+              <h4>Country</h4>
+              <textarea rows="1" class="form-control" name="description" [(ngModel)]="member.country">
+              </textarea>
+              </div>
+
+
+
+            </form>
+          </tab>
+        </tabset>
+
+        <button class="btn btn-primary mt-3" type="submit">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
