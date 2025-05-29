@@ -6,6 +6,7 @@ using API.DTOs;
 using API.Entities;
 using API.Extensions;
 using AutoMapper;
+using Microsoft.CodeAnalysis.Differencing;
 
 namespace API.Helpers
 {
@@ -13,12 +14,15 @@ namespace API.Helpers
     {
         public AutoMapperProfiles()
         {
-            CreateMap<User,MemberDto>()
-                .ForMember(d =>d.Age, o => o.MapFrom(s =>s.DateOfBirth.CalculateAge()))
-                .ForMember(d =>d.PhotoUrl, o => o.MapFrom
-                (s =>s.Photos.FirstOrDefault(x =>x.IsMain)!.Url));
+            CreateMap<User, MemberDto>()
+                .ForMember(d => d.Age, o => o.MapFrom(s => s.DateOfBirth.CalculateAge()))
+                .ForMember(d => d.PhotoUrl, o => o.MapFrom
+                (s => s.Photos.FirstOrDefault(x => x.IsMain)!.Url));
 
-            CreateMap<Photo,PhotoDto>();
+            CreateMap<Photo, PhotoDto>();
+
+            CreateMap<User, EditDto>();
+            CreateMap<EditDto, User>();
         }
     }
 }

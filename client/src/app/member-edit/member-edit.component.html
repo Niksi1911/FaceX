@@ -20,23 +20,23 @@
       <div class="card p-4 profile-card">
         <tabset class="member-tabs">
           <tab heading="Edit Information">
-            <form (ngSubmit)="editProfile()">
+            <form id="editForm"  #profileForm="ngForm" (ngSubmit)="editProfile()">
               <div class="mb-3">
                 <h4>Description</h4>
-                <textarea rows="7" class="form-control" name="description" [(ngModel)]="member.description">
+                <textarea rows="7" class="form-control" name="description" [(ngModel)]="description">
               </textarea>
               </div>
 
               <div class="mb-3">
-              <h4>City</h4>
-              <textarea rows="1" class="form-control" name="city" [(ngModel)]="member.city">
+                <h4>City</h4>
+                <textarea rows="1" class="form-control" name="city" [(ngModel)]="city">
               </textarea>
               </div>
-              
+
               <div class="mb-3">
-              <h4>Country</h4>
-              <textarea rows="1" class="form-control" name="description" [(ngModel)]="member.country">
-              </textarea>
+                <h4>Country</h4>
+                <textarea rows="1" class="form-control" name="country" [(ngModel)]="country">
+                </textarea>
               </div>
 
 
@@ -45,7 +45,7 @@
           </tab>
         </tabset>
 
-        <button class="btn btn-primary mt-3" type="submit">Save changes</button>
+        <button form="editForm" class="btn btn-primary mt-3" type="submit">Save changes</button>
       </div>
     </div>
   </div>
