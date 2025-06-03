@@ -14,7 +14,7 @@ namespace API.Controllers;
 [ApiController]
 [Route("api/[controller]")] //  /api/users
 [Authorize]
-public class UsersController(IUserRepository userRepository, IMapper mapper) : BaseAPIController
+public class UsersController(IUserRepository userRepository, IMapper mapper, IPhotoService photoService) : BaseAPIController
 {
 
   [HttpGet]
@@ -38,11 +38,9 @@ public class UsersController(IUserRepository userRepository, IMapper mapper) : B
   public async Task<ActionResult> UpdateUser(EditDto editDto)
   {
     var username = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-
     if (username == null) return BadRequest("No username !");
 
     var user = await userRepository.GetUserByUsernameAsync(username);
-
     if (user == null) return BadRequest("Cant find user");
 
     mapper.Map(editDto, user);
@@ -51,5 +49,34 @@ public class UsersController(IUserRepository userRepository, IMapper mapper) : B
 
     return BadRequest("Failed !");
   }
+
+  [HttpPost("add-photo")]
+  public async Task<ActionResult<PhotoDto>> AddPhoto(IFormFile file)
+  {
+    var username = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+    if (username == null) return BadRequest("No username !");
+
+    var user = await userRepository.GetUserByUsernameAsync(username);
+    if (user == null) return BadRequest("Cant find user");
+
+    var result = await photoService.AddPhotoAsync(file);
+
+    if (result.Error != null) return BadRequest(result.Error.Message);
+
+    var photo = new Photo
+    {
+      Url = result.SecureUrl.AbsoluteUri,
+      PublicId = result.PublicId
+    };
+
+    user.Photos.Add(photo);
+
+    if (await userRepository.SaveAllAsync()) return
+      CreatedAtAction(nameof(GetUser), new { username = user.UserName }, mapper.Map<PhotoDto>(photo));
+
+    return BadRequest("Problem while adding photo");
+  }
+
+  
 
 }
