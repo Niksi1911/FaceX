@@ -1,10 +1,11 @@
 import { Routes } from '@angular/router';
-import { ListComponent } from './list/list.component';
+import { ListComponent } from './Member/list/list.component';
 import { HomeComponent } from './home/home.component';
 import { MessagesComponent } from './messages/messages.component';
 import { WallComponent } from './wall/wall.component';
-import { MemberdetailComponent } from './memberdetail/memberdetail.component';
-import { MemberEditComponent } from './member-edit/member-edit.component';
+import { MemberdetailComponent } from './Member/memberdetail/memberdetail.component';
+import { MemberEditComponent } from './Member/member-edit/member-edit.component';
+
 
 export const routes: Routes = [
     {path:'',component:HomeComponent },

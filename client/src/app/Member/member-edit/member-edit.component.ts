@@ -1,15 +1,15 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { Members } from '../_models/members';
-import { AccountService } from '../_services/account.service';
-import { MembersService } from '../_services/members.service';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { FormsModule } from '@angular/forms';
 import { Toast, ToastrService } from 'ngx-toastr';
+import { PhotoEditorComponent } from "../photo-editor/photo-editor.component";
+import { AccountService } from '../../_services/account.service';
+import { MembersService } from '../../_services/members.service';
 
 @Component({
   selector: 'app-member-edit',
   standalone: true,
-  imports: [TabsModule,FormsModule],
+  imports: [TabsModule, FormsModule, PhotoEditorComponent],
   templateUrl: './member-edit.component.html',
   styleUrl: './member-edit.component.css'
 })

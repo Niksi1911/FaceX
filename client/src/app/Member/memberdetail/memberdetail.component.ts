@@ -1,9 +1,10 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { MembersService } from '../_services/members.service';
-import { ActivatedRoute } from '@angular/router';
-import { Members } from '../_models/members';
+
 import { GalleryItem, GalleryModule, ImageItem } from 'ng-gallery';
 import { TabsModule } from 'ngx-bootstrap/tabs';
+import { MembersService } from '../../_services/members.service';
+import { ActivatedRoute } from '@angular/router';
+import { Members } from '../../_models/members';
 
 
 @Component({
@@ -18,7 +19,7 @@ export class MemberdetailComponent implements OnInit {
   private memberservice = inject(MembersService);
   private route = inject(ActivatedRoute);
   member?: Members;
-  images: GalleryItem[] =[];
+  images: ImageItem[] =[];
 
   ngOnInit(): void {
     this.loadMember();
@@ -31,9 +32,7 @@ export class MemberdetailComponent implements OnInit {
     this.memberservice.getMember(username).subscribe({
       next: member =>{
         this.member = member;
-        member.photos.map(p=>{
-          this.images.push(new ImageItem({src: p.url,thumb:p.url}))
-        })
+        this.images = member.photos.map(p => new ImageItem({src: p.url,thumb: p.url}))
       }
     })
   }

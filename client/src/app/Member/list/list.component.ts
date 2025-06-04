@@ -1,8 +1,8 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { MembersService } from '../_services/members.service';
-import { Members } from '../_models/members';
+import { MembersService } from '../../_services/members.service';
+import { Members } from '../../_models/members';
 import { RouterLink } from '@angular/router';
-import { AccountService } from '../_services/account.service';
+import { AccountService } from '../../_services/account.service';
 
 @Component({
   selector: 'app-list',
