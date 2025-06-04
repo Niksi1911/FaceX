@@ -5,6 +5,8 @@ import { Toast, ToastrService } from 'ngx-toastr';
 import { PhotoEditorComponent } from "../photo-editor/photo-editor.component";
 import { AccountService } from '../../_services/account.service';
 import { MembersService } from '../../_services/members.service';
+import { Members } from '../../_models/members';
+import { every } from 'rxjs';
 
 @Component({
   selector: 'app-member-edit',
@@ -21,16 +23,16 @@ export class MemberEditComponent implements OnInit {
   private toastr = inject(ToastrService);
 
   city: string = "";
-  description : string = "";
+  description: string = "";
   country: string = "";
 
   ngOnInit(): void {
     this.loadMember();
   }
 
-  loadMember(){
+  loadMember() {
     const user = this.accountService.currentUser();
-    if(!user) return;
+    if (!user) return;
     this.membersService.getMember(user.username).subscribe({
       next: mem => {
         this.member = mem;
@@ -41,17 +43,21 @@ export class MemberEditComponent implements OnInit {
     })
   }
 
-  editProfile(){
+  editProfile() {
     this.member.city = this.city;
     this.member.country = this.country;
     this.member.description = this.description;
 
     this.membersService.updateMember(this.member).subscribe({
-      next:() => {
+      next: () => {
         this.toastr.success("Profile updated successfuly")
-        
+
       },
-      error:error => this.toastr.error("Failed to update profile")
+      error: error => this.toastr.error("Failed to update profile")
     })
+  }
+
+  onMemberChange(e: Members) {
+    this.member = e;
   }
 }
