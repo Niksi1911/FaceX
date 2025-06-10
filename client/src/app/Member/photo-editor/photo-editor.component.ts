@@ -4,6 +4,9 @@ import { DecimalPipe, NgClass, NgFor, NgIf, NgStyle } from '@angular/common';
 import { FileUploader, FileUploadModule } from 'ng2-file-upload';
 import { AccountService } from '../../_services/account.service';
 import { environment } from '../../../environments/environment';
+import { MembersService } from '../../_services/members.service';
+import { Photo } from '../../_models/photo';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -15,6 +18,9 @@ import { environment } from '../../../environments/environment';
 })
 export class PhotoEditorComponent implements OnInit {
   private accountService = inject(AccountService);
+  private memberService = inject(MembersService);
+  private toastr = inject(ToastrService);
+
   member = input.required<Members>();
 
   uploader?: FileUploader;
@@ -25,6 +31,33 @@ export class PhotoEditorComponent implements OnInit {
 
   ngOnInit(): void {
     this.initializeUploader();
+  }
+
+  setMainImage(photo: Photo){
+    this.memberService.updateMainPhoto(photo).subscribe({
+     next: _ =>{
+      const user = this.accountService.currentUser();
+      if (user) {
+        user.photoUrl = photo.url;
+        this.accountService.currentUser.set(user);
+      }
+
+      const updateMember = {...this.member()}
+      updateMember.photoUrl = photo.url;
+      updateMember.photos.forEach(p =>{
+        if(p.isMain) p.isMain = false;
+        if(p.id ===photo.id) p.isMain = true;
+        
+      });
+
+      this.memberChange.emit(updateMember);
+      this.toastr.success("Main Image has been Updated") 
+     },
+
+     error: () => {
+      this.toastr.error("Main photo didnt CHANGE !")
+     }
+    })
   }
 
 
@@ -57,5 +90,17 @@ export class PhotoEditorComponent implements OnInit {
 
 
   }
+
+  deletePhoto(photo : Photo){
+    this.memberService.deletePhoto(photo).subscribe({
+      next:() =>{
+        const updatedMember = {...this.member()}
+        updatedMember.photos = updatedMember.photos.filter(x => x.id !== photo.id);
+         this.memberChange.emit(updatedMember);
+      }
+    })
+  }
+
+ 
 }
 

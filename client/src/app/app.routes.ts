@@ -20,7 +20,5 @@ export const routes: Routes = [
             {path: 'member_edit',component:MemberEditComponent},
             {path: 'messages',component:MessagesComponent}
         ]
-            
-    
     }
 ];

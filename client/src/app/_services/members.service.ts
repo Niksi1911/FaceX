@@ -1,8 +1,10 @@
 import { HttpClient } from '@angular/common/http';
-import { inject, Injectable } from '@angular/core';
+import { inject, Injectable, signal } from '@angular/core';
 
 import { Members } from '../_models/members';
 import { environment } from '../../environments/environment';
+import { Photo } from '../_models/photo';
+import { tap } from 'rxjs';
 
 
 @Injectable({
@@ -11,6 +13,7 @@ import { environment } from '../../environments/environment';
 export class MembersService {
   private http = inject(HttpClient);
   baseUrl=environment.apiUrl;
+  members = signal<Members[]>([]);
   
 
   getMembers(){
@@ -23,6 +26,33 @@ export class MembersService {
 
   updateMember(member: Members){
     return this.http.put(this.baseUrl+'users',member)
+  }
+
+  updateMainPhoto(photo: Photo){
+    return this.http.put(this.baseUrl+'users/set-main-photo/'+ photo.id,{}).pipe(
+      tap(()=> {
+        this.members.update(members => members.map(m => {
+          if(m.photos.includes(photo)){
+            m.photoUrl = photo.url
+          }
+          return m;
+        }))
+      })
+    )
+  }
+
+   deletePhoto(photo : Photo){
+    return this.http.delete(this.baseUrl +'users/delete-photo/'+photo.id).pipe(
+      tap(()=>{
+        this.members.update(members => members.map(m => {
+          if(m.photos.includes(photo)){
+            m.photos = m.photos.filter(x => x.id !== photo.id)
+          }
+          return m;
+        }))
+      })
+    )
+
   }
 
 }
