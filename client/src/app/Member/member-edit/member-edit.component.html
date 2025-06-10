@@ -3,14 +3,14 @@
     <!-- Lijevi box -->
     <div class="col-md-4">
       <div class="card text-center p-4 profile-card">
-        <img [src]="member.photoUrl" class="img-fluid bigger-img mx-auto mb-4" alt="Profile photo">
+        <img [src]="member?.photoUrl" class="img-fluid bigger-img mx-auto mb-4" alt="Profile photo">
 
         <ul class="list-unstyled text-start">
-          <li><strong>Name:</strong> {{member.username}}</li>
-          <li><strong>Location:</strong> {{member.country}},{{member.city}}</li>
+          <li><strong>Name:</strong> {{member?.username}}</li>
+          <li><strong>Location:</strong> {{member?.country}},{{member?.city}}</li>
 
-          <li><strong>Age:</strong> {{member.age}}</li>
-          <li><strong>Gender:</strong> {{member.gender}}</li>
+          <li><strong>Age:</strong> {{member?.age}}</li>
+          <li><strong>Gender:</strong> {{member?.gender}}</li>
         </ul>
       </div>
     </div>
