@@ -1,1 +1,43 @@
 <p>messages works!</p>
+
+<ul *ngIf="messages.length > 0;">
+  <li *ngFor="let message of messages">
+    <strong>From:</strong> {{ message.senderUsername }}<br />
+    <strong>To:</strong> {{ message.reciverUsername }}<br />
+    <strong>Content:</strong> {{ message.content }}<br />
+    <hr />
+  </li>
+</ul>
+
+<!-- Create Message -->
+<form (ngSubmit)="createMessages()" #messageForm="ngForm" class="p-4 border rounded shadow-sm bg-light">
+
+  <div class="mb-3">
+    <label for="receiver" class="form-label">To (username):</label>
+    <input
+      type="text"
+      id="receiver"
+      name="reciverUsername"
+      class="form-control"
+      [(ngModel)]="newMessage.reciverUsername"
+      required
+    />
+  </div>
+
+  <div class="mb-3">
+    <label for="content" class="form-label">Content:</label>
+    <textarea
+      id="content"
+      name="content"
+      class="form-control"
+      rows="3"
+      [(ngModel)]="newMessage.content"
+      required
+    ></textarea>
+  </div>
+
+  <button type="submit" class="btn btn-primary" [disabled]="messageForm.invalid">
+    Send
+  </button>
+
+</form>

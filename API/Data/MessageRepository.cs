@@ -6,6 +6,8 @@ using API.DTOs;
 using API.Entities;
 using API.Interfaces;
 using AutoMapper;
+using AutoMapper.QueryableExtensions;
+using Microsoft.EntityFrameworkCore;
 
 namespace API.Data
 {
@@ -27,9 +29,15 @@ namespace API.Data
             
         }
 
-        public Task<List<MessageDto>> GetMessagesForUser()
+        public async Task<List<MessageDto>> GetMessagesForUser(string username)
         {
-            throw new NotImplementedException();
+            var message = await context.Messages
+                .Where(x => x.SenderUsername == username || x.ReciverUsername == username)
+                .OrderByDescending(m => m.MessageSent)
+                .ProjectTo<MessageDto>(mapper.ConfigurationProvider)
+                .ToListAsync();
+
+            return message;
         }
 
         public Task<IEnumerable<MessageDto>> GetMessageThread(string currentUsername, string reciverUsername)

@@ -12,7 +12,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace API.Controllers
 {
     [ApiController]
-    public class MessagesController(IMessageRepository messageRepository,IUserRepository userRepository,IMapper mapper) : BaseAPIController
+    public class MessagesController(IMessageRepository messageRepository, IUserRepository userRepository, IMapper mapper) : BaseAPIController
     {
         [HttpPost]
         public async Task<ActionResult<MessageDto>> CreateMessageDto(CreateMessageDto createMessageDto)
@@ -45,8 +45,22 @@ namespace API.Controllers
             if (await messageRepository.SaveAllAsync()) return Ok(mapper.Map<MessageDto>(message));
 
             return BadRequest("Failed to save message");
-            
-        
+
         }
+
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<MessageDto>>> GetMessagesForUser()
+        {
+            var username = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            if (username == null) return BadRequest("User not found ");
+
+            var message = messageRepository.GetMessagesForUser(username);
+
+            return await message;
+
+        }
+
+
+    
     }
 }
