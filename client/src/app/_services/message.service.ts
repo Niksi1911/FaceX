@@ -14,23 +14,26 @@ export class MessageService {
   messages: Message[] = [];
   createMessageform: Message[] = [];
 
-  getMessages(){
-    return this.http.get<Message[]>(this.baseUrl +'messages')
+  getMessages() {
+    return this.http.get<Message[]>(this.baseUrl + 'messages')
   }
 
-  createMessage(createMessageform : CreateMessage){
-    return this.http.post<Message[]>(this.baseUrl+'messages',this.createMessageform)
+  createMessage(createMessageform: CreateMessage) {
+    return this.http.post<Message>(this.baseUrl + 'messages', createMessageform)
+  }
+
+  getMessageThread(username: string){
+    return this.http.get<Message[]>(this.baseUrl + 'messages/thread/'+username)
   }
 
   loadMessages() {
-  this.getMessages().subscribe({
-    next: (res) => this.messages = res
-  });
+    this.getMessages().subscribe({
+      next: (res) => this.messages = res
+    });
+  }
 
   
-}
-
-
-
 
 }
+
+

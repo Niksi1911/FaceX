@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RegisterComponent } from "../register/register.component";
+import { WallComponent } from '../wall/wall.component';
 
 @Component({
   selector: 'app-home',

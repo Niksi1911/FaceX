@@ -5,12 +5,13 @@ import { TabsModule } from 'ngx-bootstrap/tabs';
 import { MembersService } from '../../_services/members.service';
 import { ActivatedRoute } from '@angular/router';
 import { Members } from '../../_models/members';
+import { MemberMessagesComponent } from "../member-messages/member-messages.component";
 
 
 @Component({
   selector: 'app-memberdetail',
   standalone: true,
-  imports: [TabsModule,GalleryModule],
+  imports: [TabsModule, GalleryModule, MemberMessagesComponent],
   templateUrl: './memberdetail.component.html',
   styleUrl: './memberdetail.component.css'
 })
@@ -26,7 +27,6 @@ export class MemberdetailComponent implements OnInit {
   }
 
   loadMember(){
-    
     const username = this.route.snapshot.paramMap.get('username');
     if(!username)return;
     this.memberservice.getMember(username).subscribe({

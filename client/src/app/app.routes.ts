@@ -5,6 +5,7 @@ import { MessagesComponent } from './messages/messages.component';
 import { WallComponent } from './wall/wall.component';
 import { MemberdetailComponent } from './Member/memberdetail/memberdetail.component';
 import { MemberEditComponent } from './Member/member-edit/member-edit.component';
+import { RegisterComponent } from './register/register.component';
 
 
 export const routes: Routes = [
@@ -14,6 +15,7 @@ export const routes: Routes = [
         runGuardsAndResolvers:'always',
         
         children : [
+            
             {path: 'wall',component:WallComponent},
             {path: 'list',component:ListComponent},
             {path: 'memberdetail/:username',component:MemberdetailComponent},

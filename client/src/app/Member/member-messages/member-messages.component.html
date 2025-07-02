@@ -1,0 +1,31 @@
+<div class="card">
+    <div class="card-body">
+        @if(messages.length === 0){
+            <p>No messages yet !</p>
+        }@else {
+            <ul class="chat">
+                @for (message of messages; track message.id) {
+                    <li>
+                        <div>
+                            <span class="chat-img flat-end">
+                                <img class="rounded-circle" src="{{message.senderPhotoUrl || '.assets/user.png' }} " alt="sender photo">
+                            </span>
+                            <div class="chat-body">
+                                <div class="header">
+                                    <small class="text-muted">
+                                        <span class="fa fa-clock-o">{{message.messageSent}}</span>
+
+                                    </small>
+
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                }
+            </ul>
+        }
+    </div>
+</div>
+@for (message of messages; track message.id) {
+    <p>{{message.content}}</p>
+}

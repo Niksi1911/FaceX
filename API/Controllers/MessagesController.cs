@@ -60,6 +60,18 @@ namespace API.Controllers
 
         }
 
+        [HttpGet("thread/{username}")]
+        public async Task<ActionResult<IReadOnlyList<MessageDto>>> GetMessageThread(string username)
+        {
+            var currentUsername = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            if (currentUsername == null) return BadRequest("UserNotFound");
+
+            var messages = await messageRepository.GetMessageThread(currentUsername, username);
+            return Ok(messages);
+
+            
+        }
+
 
     
     }

@@ -24,7 +24,7 @@ export class MessagesComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadMessages()
-    this.createMessages()
+   
   }
 
   loadMessages(){
@@ -36,6 +36,7 @@ export class MessagesComponent implements OnInit {
   createMessages(){
     this.messageService.createMessage(this.newMessage).subscribe({
       next: (response) => {
+        this.messages.push(response);
         this.newMessage = {
           reciverUsername:'',
           content: ''

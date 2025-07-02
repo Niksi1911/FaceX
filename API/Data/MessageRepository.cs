@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace API.Data
 {
-    public class MessageRepository(DataContext context,IMapper mapper) : IMessageRepository
+    public class MessageRepository(DataContext context, IMapper mapper) : IMessageRepository
     {
         public void AddMessage(Message message)
         {
@@ -26,7 +26,7 @@ namespace API.Data
         public async Task<Message?> GetMessage(int id)
         {
             return await context.Messages.FindAsync(id);
-            
+
         }
 
         public async Task<List<MessageDto>> GetMessagesForUser(string username)
@@ -40,14 +40,24 @@ namespace API.Data
             return message;
         }
 
-        public Task<IEnumerable<MessageDto>> GetMessageThread(string currentUsername, string reciverUsername)
+        public async Task<IEnumerable<MessageDto>> GetMessageThread(string currentUsername, string reciverUsername)
         {
-            throw new NotImplementedException();
+            var message = await context.Messages
+                .Include(x => x.Sender).ThenInclude(x => x.Photos)
+                .Include(x => x.Reciver).ThenInclude(x => x.Photos)
+                .Where(x =>
+                    (x.ReciverUsername == currentUsername && x.SenderUsername == reciverUsername) ||
+                    (x.SenderUsername == currentUsername && x.ReciverUsername == reciverUsername))
+                .OrderBy(x => x.MessageSent)
+                .ToListAsync();
+
+            return mapper.Map<IEnumerable<MessageDto>>(message);
+
         }
 
         public async Task<bool> SaveAllAsync()
         {
-            return await context.SaveChangesAsync()>0;
+            return await context.SaveChangesAsync() > 0;
         }
     }
 }
